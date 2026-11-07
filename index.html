@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Happy Birthday Uzma! 🎂✨</title>
+<!-- PWA / link preview -->
+<meta name="theme-color" content="#2a0845">
+<meta name="description" content="A special VIP birthday surprise for Uzma!">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Uzma B-Day">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Happy Birthday Uzma! 🎂✨">
+<meta property="og:description" content="A special VIP birthday surprise made just for you. Tap to open your gift!">
+<!-- NOTE: og:image ko hosting ke baad full URL se replace karein, e.g. https://USERNAME.github.io/REPO/og-image.png -->
+<meta property="og:image" content="og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Happy Birthday Uzma! 🎂✨">
+<meta name="twitter:description" content="A special VIP birthday surprise made just for you. Tap to open your gift!">
+<meta name="twitter:image" content="og-image.png">
+
+<!-- Tailwind CSS for styling -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          outfit: ['Outfit', 'sans-serif'],
+          jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+        },
+        colors: {
+          brandPink: '#FF2E93',
+          brandPurple: '#7C3AED',
+          brandGold: '#F59E0B',
+          brandCyan: '#06B6D4',
+          darkBg: '#0F172A',
+        },
+        animation: {
+          'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          'float': 'float 6s ease-in-out infinite',
+          'bounce-soft': 'bounceSoft 2s ease-in-out infinite',
+          'shimmer': 'shimmer 2.5s infinite',
+        },
+        keyframes: {
+          float: {
+            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+            '50%': { transform: 'translateY(-15px) rotate(3deg)' },
+          },
+          bounceSoft: {
+            '0%, 100%': { transform: 'translateY(0)' },
+            '50%': { transform: 'translateY(-8px)' },
+          },
+          shimmer: {
+            '0%': { transform: 'translateX(-100%)' },
+            '100%': { transform: 'translateX(100%)' }
+          }
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: radial-gradient(circle at top left, #2a0845, #0f0c20 50%, #050515 100%);
+    background-attachment: fixed;
+    color: #F8FAFC;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* Glassmorphism utility */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.07);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-card-light {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  }
+
+  .btn-gradient {
+    background: linear-gradient(135deg, #FF2E93 0%, #FF8A00 100%);
+    box-shadow: 0 8px 25px rgba(255, 46, 147, 0.4);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .btn-gradient:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(255, 46, 147, 0.6);
+  }
+
+  .btn-gradient:active {
+    transform: translateY(1px) scale(0.98);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 46, 147, 0.6), 0 0 40px rgba(124, 58, 237, 0.4);
+  }
+
+  .shake-anim {
+    animation: shake 0.45s cubic-bezier(.36,.07,.19,.97) both;
+  }
+
+  @keyframes shake {
+    10%, 90% { transform: translate3d(-2px, 0, 0); }
+    20%, 80% { transform: translate3d(4px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+    40%, 60% { transform: translate3d(6px, 0, 0); }
+  }
+
+  /* Modals: use real CSS instead of Tailwind's hidden/flex conflict */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 60;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .modal-overlay.is-open {
+    display: flex;
+  }
+  .modal-overlay.is-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0f0c20;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3b2d54;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FF2E93;
+  }
+
+  /* Canvas Positioning */
+  #confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 50;
+  }
+</style>
+</head>
+<body class="relative flex flex-col justify-between min-h-screen selection:bg-brandPink selection:text-white">
+
+<!-- Canvas for Confetti & Particles -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- Top Navigation & Controls -->
+<header class="w-full max-w-4xl mx-auto px-4 pt-6 flex justify-between items-center z-40 relative">
+  <div class="flex items-center gap-2">
+    <span class="text-2xl animate-spin" style="animation-duration: 8s;">✨</span>
+    <span class="font-outfit font-extrabold text-lg md:text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-amber-300">UZMA'S B-DAY</span>
+  </div>
+
+  <div class="flex items-center gap-3">
+    <!-- Sound Toggle Button -->
+    <button id="sound-btn" onclick="toggleAudio()" class="glass-card px-3 py-2 rounded-full flex items-center gap-2 text-xs md:text-sm font-semibold hover:bg-white/20 transition-all text-pink-300">
+      <i id="sound-icon" class="fas fa-volume-up"></i>
+      <span id="sound-text" class="hidden sm:inline">Sound ON</span>
+    </button>
+  </div>
+</header>
+
+<!-- Main Container -->
+<main id="main-container" class="w-full max-w-3xl mx-auto px-4 py-6 z-30 flex-grow flex flex-col justify-center items-center">
+
+  <!-- Header Title -->
+  <div class="text-center mb-8 animate-float">
+    <h1 class="font-outfit text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white text-glow mb-2">
+      Happy Birthday <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-yellow-300">Uzma!</span> 🎂
+    </h1>
+    <p class="text-pink-200/80 text-sm sm:text-lg font-medium">A VIP Experience Crafted Exclusively For Kaki / Uzu / Uzi / Arbhandi 🎉</p>
+  </div>
+
+  <!-- Dynamic Content Card Holder -->
+  <div id="app-card-wrapper" class="w-full">
+    <!-- Content generated dynamically by JS -->
+  </div>
+
+</main>
+
+<!-- Footer -->
+<footer class="w-full text-center py-6 text-xs text-purple-300/60 z-30">
+  <p>Designed with ❤️ & 🤪 banter by your brother J....R</p>
+</footer>
+
+<!-- Slap Warning Modal -->
+<div id="slap-modal" class="modal-overlay">
+  <div class="glass-card-light text-gray-900 rounded-3xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl border-4 border-pink-500 relative overflow-hidden">
+    <div class="text-7xl mb-2 animate-bounce">😡</div>
+    <div class="text-6xl mb-4 transform -rotate-12">👋💥</div>
+    <h3 class="text-2xl font-black text-pink-600 mb-2 font-outfit">EXCUSE ME?!</h3>
+    <p id="slap-msg" class="text-lg font-bold text-gray-800 mb-6"></p>
+    <button id="slap-close-btn" class="w-full py-3 px-6 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-600 text-white font-black text-lg shadow-lg hover:brightness-110 active:scale-95 transition-all">
+      Okay, sorry! I'll click YES 🥺
+    </button>
+  </div>
+</div>
+
+<!-- Custom Popup / Alert Modal -->
+<div id="popup-modal" class="modal-overlay">
+  <div class="glass-card-light text-gray-900 rounded-3xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl border-4 border-purple-500 relative">
+    <div class="text-6xl mb-3">🤦‍♀️😂</div>
+    <p id="popup-msg" class="text-lg font-semibold text-gray-800 mb-6 leading-relaxed"></p>
+    <button id="popup-ok-btn" class="w-full py-3 px-6 rounded-2xl bg-purple-600 text-white font-bold text-lg shadow-lg hover:bg-purple-700 active:scale-95 transition-all">
+      Okay 🙈
+    </button>
+  </div>
+</div>
+
+<!-- JavaScript Logic -->
+<script>
+// ==================== Web Audio API Sound Synthesizer ====================
+class SoundManager {
+  constructor() {
+    this.ctx = null;
+    this.muted = false;
+  }
+
+  // Safe init: creates the context and resumes it (Chrome starts it suspended)
+  init() {
+    try {
+      if (!this.ctx) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return false;
+        this.ctx = new AudioCtx();
+      }
+      if (this.ctx.state === 'suspended') {
+        this.ctx.resume();
+      }
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  playPop() {
+    if (this.muted || !this.init()) return;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(400, this.ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(800, this.ctx.currentTime + 0.1);
+    gain.gain.setValueAtTime(0.3, this.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.1);
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start();
+    osc.stop(this.ctx.currentTime + 0.1);
+  }
+
+  playSlap() {
+    if (this.muted || !this.init()) return;
+    const bufferSize = Math.floor(this.ctx.sampleRate * 0.15);
+    const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) {
+      data[i] = Math.random() * 2 - 1;
+    }
+    const noise = this.ctx.createBufferSource();
+    noise.buffer = buffer;
+    const filter = this.ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 1200;
+    const gain = this.ctx.createGain();
+    gain.gain.setValueAtTime(0.6, this.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.15);
+    noise.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.ctx.destination);
+    noise.start();
+  }
+
+  playSuccess() {
+    if (this.muted || !this.init()) return;
+    const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+    notes.forEach((freq, i) => {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.value = freq;
+      const startTime = this.ctx.currentTime + (i * 0.08);
+      gain.gain.setValueAtTime(0.0001, startTime);
+      gain.gain.linearRampToValueAtTime(0.2, startTime + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.3);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start(startTime);
+      osc.stop(startTime + 0.3);
+    });
+  }
+
+  playTicking() {
+    if (this.muted || !this.init()) return;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(600, this.ctx.currentTime);
+    gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.05);
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start();
+    osc.stop(this.ctx.currentTime + 0.05);
+  }
+}
+
+const sounds = new SoundManager();
+
+function toggleAudio() {
+  sounds.muted = !sounds.muted;
+  const icon = document.getElementById('sound-icon');
+  const text = document.getElementById('sound-text');
+  if (sounds.muted) {
+    icon.className = 'fas fa-volume-mute text-red-400';
+    text.textContent = 'Muted';
+  } else {
+    icon.className = 'fas fa-volume-up text-pink-300';
+    text.textContent = 'Sound ON';
+    sounds.playPop();
+  }
+}
+
+// ==================== Canvas Confetti & FX Engine ====================
+const canvas = document.getElementById('confetti-canvas');
+const fxCtx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+class Particle {
+  constructor(x, y, isConfetti = true) {
+    this.x = x;
+    this.y = y;
+    this.isConfetti = isConfetti;
+    this.size = isConfetti ? Math.random() * 8 + 4 : Math.random() * 4 + 2;
+    this.vx = (Math.random() - 0.5) * 12;
+    this.vy = (Math.random() - 0.7) * 14;
+    this.gravity = isConfetti ? 0.25 : 0.05;
+    this.friction = 0.98;
+    this.rotation = Math.random() * 360;
+    this.rotSpeed = (Math.random() - 0.5) * 10;
+    const colors = ['#FF2E93', '#FF8A00', '#F59E0B', '#10B981', '#06B6D4', '#8B5CF6', '#EC4899'];
+    this.color = colors[Math.floor(Math.random() * colors.length)];
+    this.opacity = 1;
+    this.fade = Math.random() * 0.015 + 0.005;
+  }
+
+  update() {
+    this.vx *= this.friction;
+    this.vy *= this.friction;
+    this.vy += this.gravity;
+    this.x += this.vx;
+    this.y += this.vy;
+    this.rotation += this.rotSpeed;
+    this.opacity -= this.fade;
+  }
+
+  draw() {
+    fxCtx.save();
+    fxCtx.translate(this.x, this.y);
+    fxCtx.rotate((this.rotation * Math.PI) / 180);
+    fxCtx.globalAlpha = Math.max(0, this.opacity);
+    fxCtx.fillStyle = this.color;
+    if (this.isConfetti) {
+      fxCtx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size * 1.5);
+    } else {
+      fxCtx.beginPath();
+      fxCtx.arc(0, 0, this.size, 0, Math.PI * 2);
+      fxCtx.fill();
+    }
+    fxCtx.restore();
+  }
+}
+
+function triggerConfetti(x = window.innerWidth / 2, y = window.innerHeight / 3, count = 80) {
+  sounds.playSuccess();
+  for (let i = 0; i < count; i++) {
+    particles.push(new Particle(x, y, true));
+  }
+}
+
+function renderCanvas() {
+  fxCtx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let i = particles.length - 1; i >= 0; i--) {
+    particles[i].update();
+    particles[i].draw();
+    if (particles[i].opacity <= 0) {
+      particles.splice(i, 1);
+    }
+  }
+  requestAnimationFrame(renderCanvas);
+}
+renderCanvas();
+
+// ==================== Application State & Steps Data ====================
+const STEPS = [
+  {
+    t: "🎁 VIP Birthday Portal",
+    badge: "Step 1 of 5",
+    color: "from-pink-500 to-purple-600",
+    b: `<div class="text-center py-4">
+          <div class="text-7xl mb-4 animate-bounce-soft">🎈🎁🎈</div>
+          <p class="text-lg md:text-xl font-semibold text-purple-100 leading-relaxed mb-4">
+            Hey <span class="text-yellow-300 font-extrabold text-2xl">Uzma</span>! 🥳<br>This customized VIP page is created specially for you by your brother. Ready to unwrap it?
+          </p>
+        </div>`,
+    btn: "Yes, open my gift! 👀"
+  },
+  {
+    t: "🔍 Sister Nickname Scanner",
+    badge: "Step 2 of 5",
+    color: "from-purple-600 to-indigo-600",
+    b: `<div class="text-center py-2">
+          <p class="text-base text-purple-200 mb-4 font-mono">Scanning target sister database... 📡</p>
+          <div class="flex flex-wrap justify-center gap-3 my-4">
+            <span class="chip px-4 py-2 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-black text-lg shadow-lg transform hover:scale-110 transition-all">Uzu 🐰</span>
+            <span class="chip px-4 py-2 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-black text-lg shadow-lg transform hover:scale-110 transition-all">Uzi 😎</span>
+            <span class="chip px-4 py-2 rounded-2xl bg-gradient-to-r from-purple-500 to-violet-600 text-white font-black text-lg shadow-lg transform hover:scale-110 transition-all">Arbhandi 🤪</span>
+            <span class="chip px-4 py-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-black text-lg shadow-lg transform hover:scale-110 transition-all">Kaki 💖</span>
+          </div>
+          <div class="glass-card p-4 rounded-2xl mt-4 border border-white/10">
+            <p class="text-lg font-bold text-yellow-300">Official Verdict:</p>
+            <p class="text-purple-100 text-base">One multi-talented person, four unique nicknames, absolute zero chill! 😂 Agree?</p>
+          </div>
+        </div>`,
+    btn: "100% True 😂"
+  },
+  {
+    t: "🧁 Cake Baking Engine 3.0",
+    badge: "Step 3 of 5",
+    color: "from-amber-500 to-pink-500",
+    load: true,
+    b: `<div class="text-center py-2">
+          <p class="text-lg text-purple-100 mb-4 font-semibold">Baking your luxury birthday cake… 🧁</p>
+          <div class="w-full bg-black/40 h-8 rounded-full p-1 border border-white/20 relative overflow-hidden mb-3">
+            <div id="pg" class="h-full rounded-full bg-gradient-to-r from-pink-500 via-amber-400 to-emerald-400 transition-all duration-300 relative overflow-hidden" style="width:0%">
+              <div class="absolute inset-0 bg-white/30 animate-shimmer"></div>
+            </div>
+          </div>
+          <p id="pt" class="text-yellow-300 font-mono font-bold text-lg">0% - Initializing oven...</p>
+        </div>`,
+    btn: "Give Me Cake! 🍰"
+  },
+  {
+    t: "🧮 Age Verification & Intelligence Unit",
+    badge: "Step 4 of 5",
+    color: "from-cyan-600 to-blue-600",
+    b: `<div class="text-center py-2 space-y-4">
+          <div class="glass-card p-4 rounded-2xl border border-cyan-400/30 flex justify-around items-center">
+            <div>
+              <p class="text-xs text-cyan-200 uppercase tracking-widest font-bold">Born Date</p>
+              <p class="text-xl font-black text-white font-mono">15 Nov 1999 🗓️</p>
+            </div>
+            <div class="w-px h-10 bg-white/20"></div>
+            <div>
+              <p class="text-xs text-pink-300 uppercase tracking-widest font-bold">Official Age</p>
+              <p class="text-3xl font-black text-yellow-300 font-outfit">27 🎉</p>
+            </div>
+          </div>
+          <p class="text-xs text-purple-300 italic">(System Note: Math check passed, though mental age is permanently locked at 18. 😏)</p>
+          <p class="text-lg font-bold text-white">Do you officially confirm you are 27?</p>
+        </div>`,
+    btn: "Yes, I’m 27 😎"
+  },
+  {
+    t: "💌 Heartfelt Birthday Wishes",
+    badge: "Final Step 💖",
+    color: "from-pink-600 to-rose-600",
+    final: true
+  }
+];
+
+const NO_WARNINGS = [
+  "Wrong button, Kaki! 😠 Press Yes!",
+  "Arbhandi!! 😡 Don’t you dare click NO!",
+  "Uzi, I'm coming for you! 🏃‍♂️💨 Click YES!",
+  "Final warning, Uzu! 😤 The Birthday girl MUST say YES!"
+];
+
+const WISHES = [
+  "🌸 Happy Birthday, my dear sister Uzma! You are my first friend, my partner in crime, and my favourite human. 💖",
+  "🌈 May your life be as colorful as this page and your problems as small as the last slice of cake! 🍰",
+  "😄 Thank you for every laugh, every fight (which I obviously won 😜), and every time you had my back. 🤗",
+  "🌟 May Allah grant you endless happiness, ultimate success, great health, and fulfill every desire of your heart! 🤲✨",
+  "📈💰 Special Trader Wish: May Allah make you an exceptionally successful trader with massive profits, smart decisions, and blessed earnings! 🤲🚀📈",
+  "🎁 Stay awesome, stay smiling, and never stop being the Uzu, Uzi, Arbhandi, Kaki we all adore! 🥰"
+];
+
+let noCount = 0;
+let cakeTimer = null;
+let finalTimer = null;
+const appWrapper = document.getElementById('app-card-wrapper');
+
+// ==================== Modal Controls ====================
+function openModal(modal) {
+  modal.classList.add('is-open');
+  // double rAF so the transition runs after display is applied
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => modal.classList.add('is-visible'));
+  });
+}
+
+function closeModal(modal, after) {
+  modal.classList.remove('is-visible');
+  setTimeout(() => {
+    modal.classList.remove('is-open');
+    if (after) after();
+  }, 300);
+}
+
+function showSlapModal() {
+  sounds.playSlap();
+  const modal = document.getElementById('slap-modal');
+  document.getElementById('slap-msg').textContent = NO_WARNINGS[noCount % NO_WARNINGS.length];
+  noCount++;
+  openModal(modal);
+}
+
+document.getElementById('slap-close-btn').onclick = () => {
+  sounds.playPop();
+  closeModal(document.getElementById('slap-modal'));
+};
+
+function showPopupMsg(text, callback) {
+  sounds.playPop();
+  const modal = document.getElementById('popup-modal');
+  document.getElementById('popup-msg').innerHTML = text;
+  openModal(modal);
+
+  document.getElementById('popup-ok-btn').onclick = () => {
+    sounds.playPop();
+    closeModal(modal, callback);
+  };
+}
+
+// ==================== Lock Screen Module (Prank PIN) ====================
+function renderLockScreen() {
+  appWrapper.innerHTML = `
+    <div id="lock-card" class="glass-card rounded-3xl p-6 md:p-8 max-w-xl mx-auto border border-white/20 shadow-2xl relative overflow-hidden transition-all duration-500">
+      <div class="flex items-center justify-between mb-6 border-b border-white/10 pb-4">
+        <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full border border-pink-500/30">
+          <i class="fas fa-lock mr-1"></i> Security Check
+        </span>
+        <span class="text-xs text-purple-200">Birthday Vault</span>
+      </div>
+
+      <div class="text-center space-y-4">
+        <div class="text-6xl animate-bounce-soft">🔐</div>
+        <h2 class="text-2xl font-bold font-outfit text-white">Secret Birthday Unlock</h2>
+        <p id="pin-prompt" class="text-purple-200 text-base leading-relaxed">
+          Enter <strong class="text-yellow-300 font-extrabold">J....R</strong>’s birthday date to open your surprise 🎂
+        </p>
+
+        <div class="py-2">
+          <input id="pin-input" type="tel" inputmode="numeric" maxlength="10" placeholder="DDMMYYYY"
+            class="w-full text-center text-2xl font-mono tracking-widest py-3 px-4 rounded-2xl bg-black/50 border-2 border-purple-400/50 text-yellow-300 focus:outline-none focus:border-pink-500 transition-all placeholder:text-gray-600">
+        </div>
+
+        <p id="pin-err" class="text-red-400 font-semibold text-sm min-h-[20px]"></p>
+
+        <button id="pin-submit" class="w-full btn-gradient py-4 rounded-2xl font-black text-lg text-white shadow-xl tracking-wide uppercase">
+          Unlock Birthday Vault 🔓
+        </button>
+      </div>
+    </div>
+  `;
+
+  const input = document.getElementById('pin-input');
+  const err = document.getElementById('pin-err');
+  const card = document.getElementById('lock-card');
+  const prompt = document.getElementById('pin-prompt');
+
+  let lockStep = 1;
+  const errorMsgs = [
+    "Wrong PIN! 🤨 Even you forgot your birthday?",
+    "Nope! 😂 Hint: it’s the day you were born!",
+    "Still wrong, Arbhandi! 🙈 Format: 15111999… oops 🤫"
+  ];
+  let errIdx = 0;
+
+  function showError(msg) {
+    err.textContent = msg;
+    card.classList.remove('shake-anim');
+    void card.offsetWidth; // trigger reflow
+    card.classList.add('shake-anim');
+  }
+
+  const handleUnlock = () => {
+    sounds.playPop();
+    const val = input.value.replace(/\D/g, '');
+
+    if (lockStep === 1) {
+      if (val.length < 4) {
+        showError('Enter a valid date first 😜');
+        return;
+      }
+      showPopupMsg(
+        'O hli hoi birthday TRI ty date enter odhi krdi pai! 🤦‍♀️<br><br>Arbhandi jai apni Mr k likh yaad ha ty nity <b>J....R</b> TU poch ly 😜',
+        () => {
+          lockStep = 2;
+          input.value = '';
+          err.textContent = '';
+          prompt.innerHTML = 'Now enter <strong class="text-yellow-300 font-extrabold">your July</strong> birthday date 🗓️';
+          input.focus();
+        }
+      );
+      return;
+    }
+
+    if (lockStep === 2) {
+      if (val.length < 4) {
+        showError('Enter a valid date first 😜');
+        return;
+      }
+      showPopupMsg(
+        'Tuun ty waqia e hli hoi aaj 02 July ha? 🙈<br><br>Tnu oh bri yaad amdi aaj di likh chabal ballan 😜',
+        () => {
+          lockStep = 3;
+          input.value = '';
+          err.textContent = '';
+          prompt.innerHTML = 'Now enter <strong class="text-yellow-300 font-extrabold">your actual</strong> birthday date 🎂 (15111999) to unlock 🔓';
+          input.focus();
+        }
+      );
+      return;
+    }
+
+    if (val === '15111999') {
+      triggerConfetti(window.innerWidth / 2, window.innerHeight / 2, 120);
+      renderStep(0);
+    } else {
+      showError(errorMsgs[errIdx++ % errorMsgs.length]);
+    }
+  };
+
+  document.getElementById('pin-submit').onclick = handleUnlock;
+  input.onkeydown = (e) => { if (e.key === 'Enter') handleUnlock(); };
+}
+
+// ==================== Interactive Step Engine ====================
+function renderStep(idx) {
+  // stop any running cake timer when leaving a step
+  if (cakeTimer) { clearInterval(cakeTimer); cakeTimer = null; }
+
+  const stepData = STEPS[idx];
+
+  if (stepData.final) {
+    appWrapper.innerHTML = `
+      <div class="glass-card rounded-3xl p-6 md:p-8 max-w-2xl mx-auto border border-pink-500/30 shadow-2xl space-y-6 relative overflow-hidden">
+        <div class="text-center space-y-2">
+          <div class="text-6xl animate-bounce mb-2">🎂🥳🎊</div>
+          <span class="px-4 py-1.5 rounded-full bg-pink-500/20 text-pink-300 text-xs font-black uppercase tracking-widest border border-pink-500/40">
+            Grand Finale
+          </span>
+          <h2 class="text-3xl md:text-4xl font-extrabold font-outfit text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-yellow-300 to-emerald-300">
+            Happy 27th Birthday, Uzma! 💐
+          </h2>
+        </div>
+
+        <div id="wishes-list" class="space-y-4 py-2">
+          ${WISHES.map((w, i) => `
+            <div class="wish-item opacity-0 transform translate-y-6 transition-all duration-700 glass-card p-4 rounded-2xl border-l-4 ${i % 2 === 0 ? 'border-pink-500 bg-white/5' : 'border-purple-500 bg-white/10'} text-purple-100 text-base md:text-lg leading-relaxed shadow-md">
+              ${w}
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="text-center pt-6 border-t border-white/10">
+          <p class="text-2xl md:text-3xl font-extrabold font-outfit text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-yellow-400 animate-pulse">
+            With lots of love 💕
+          </p>
+          <p class="text-lg font-bold text-pink-200 mt-1">Your Arbhanda Bhai J....r 🤪👑</p>
+
+          <button id="more-confetti" class="mt-6 px-6 py-3 rounded-2xl bg-gradient-to-r from-pink-500 to-amber-500 text-white font-bold text-sm shadow-xl hover:scale-105 active:scale-95 transition-all">
+            Celebrate More Confetti! 🎉✨
+          </button>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('more-confetti').onclick = () => {
+      triggerConfetti(window.innerWidth / 2, window.innerHeight / 2, 150);
+    };
+
+    triggerConfetti(window.innerWidth / 2, window.innerHeight / 3, 100);
+
+    // Staggered reveal for wishes
+    const items = document.querySelectorAll('.wish-item');
+    items.forEach((el, i) => {
+      setTimeout(() => {
+        sounds.playPop();
+        el.classList.remove('opacity-0', 'translate-y-6');
+        el.classList.add('opacity-100', 'translate-y-0');
+      }, 400 + i * 500);
+    });
+
+    // Continuous soft confetti interval
+    if (finalTimer) clearInterval(finalTimer);
+    finalTimer = setInterval(() => {
+      triggerConfetti(Math.random() * window.innerWidth, Math.random() * window.innerHeight * 0.5, 25);
+    }, 4500);
+
+    return;
+  }
+
+  // Render Standard Card Step
+  appWrapper.innerHTML = `
+    <div class="glass-card rounded-3xl p-6 md:p-8 max-w-xl mx-auto border border-white/20 shadow-2xl relative overflow-hidden transition-all duration-500">
+      <div class="flex items-center justify-between mb-4 border-b border-white/10 pb-3">
+        <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 bg-gradient-to-r ${stepData.color} text-white rounded-full shadow-md">
+          ${stepData.badge}
+        </span>
+        <h3 class="text-sm font-bold text-purple-200">${stepData.t}</h3>
+      </div>
+
+      <div class="my-4">
+        ${stepData.b}
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 pt-4 border-t border-white/10">
+        <button id="btn-yes" class="flex-1 btn-gradient py-3.5 px-6 rounded-2xl font-black text-base text-white uppercase tracking-wider shadow-lg">
+          ${stepData.btn}
+        </button>
+        <button id="btn-no" class="sm:w-1/3 py-3.5 px-6 rounded-2xl bg-gray-800/80 hover:bg-gray-700/80 text-gray-300 font-bold text-base border border-white/10 transition-all active:scale-95">
+          No 🙅
+        </button>
+      </div>
+    </div>
+  `;
+
+  const btnYes = document.getElementById('btn-yes');
+  const btnNo = document.getElementById('btn-no');
+
+  // Cake loading progress bar
+  if (stepData.load) {
+    const pg = document.getElementById('pg');
+    const pt = document.getElementById('pt');
+    let progress = 0;
+    const msgs = [
+      "Mixing organic flour… 🥣",
+      "Adding rainbow sprinkles… 🌈",
+      "Kaki is secretly tasting it… 👅",
+      "Baking at optimum temperature… 🔥",
+      "Cake ready for Uzma! 🎂"
+    ];
+
+    cakeTimer = setInterval(() => {
+      progress += Math.random() * 12 + 5;
+      if (progress > 100) progress = 100;
+
+      sounds.playTicking();
+      pg.style.width = progress + '%';
+      const msgIdx = Math.min(4, Math.floor(progress / 21));
+      pt.textContent = `${Math.floor(progress)}% - ${msgs[msgIdx]}`;
+
+      if (progress >= 100) {
+        clearInterval(cakeTimer);
+        cakeTimer = null;
+        triggerConfetti(window.innerWidth / 2, window.innerHeight / 2, 50);
+      }
+    }, 250);
+  }
+
+  btnNo.onclick = showSlapModal;
+
+  btnYes.onclick = () => {
+    sounds.playPop();
+    triggerConfetti(window.innerWidth / 2, window.innerHeight / 2, 40);
+    renderStep(idx + 1);
+  };
+}
+
+// ==================== Initialize Application ====================
+document.addEventListener('DOMContentLoaded', renderLockScreen);
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').catch(function () {});
+  });
+}
+</script>
+</body>
+</html>
